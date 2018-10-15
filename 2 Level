@@ -1,0 +1,36 @@
+/*
+  http://www.pythonchallenge.com/pc/def/ocr.html
+*/
+
+/*
+  우클릭의 페이지 소스보기를 눌러 문제를 확인한 후 해당 텍스트를 텍스트파일로 저장.
+  문제는 레어 문자를 찾아라. 였으므로 
+  출력한 char에서 values값이 1인 문자를 확인.
+*/
+  
+file = '2LevelText.txt'
+char = {}
+
+with open(file,mode='rt') as f:
+for data in f.read():
+count = char.get(data,0)
+char[data] = count + 1
+print(char)  
+
+/*
+  확인된 유니크 문자들의 순서를 확인하기위해 다시 파일을 읽어오고 
+  해당 문자열일때 문자를 출력. 
+*/
+
+file = '2LevelText.txt'
+char = {}
+
+with open(file,mode='rt') as f:
+    for data in f.read():
+        if data in ['a','e','i','l','q','u','t','y']:
+            print data,
+            
+            
+/*
+  해서 다운 답은 equality.
+*/
