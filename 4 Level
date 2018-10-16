@@ -1,0 +1,30 @@
+/*
+  http://www.pythonchallenge.com/pc/def/linkedlist.php
+  
+  urllib 과 urllib2 는 모두 URL 요청 관련 항목을 제공하지만 다른 기능을 제공하는 Python 모듈이다
+  1) urllib2는 URL 요청에 대한 헤더를 설정하는 Request 객체를 허용 할 수 있지만,  urllib는 URL 만 허용한다.
+  2) urllib는 GET 쿼리 문자열 생성에 사용되는 urlencode 메서드를 제공하며 urllib2에는 이러한 함수가 없다. 이것은 urllib이 urllib2와 함께 사용되는 이유다.
+  라고 하는데. 우리는 그냥 url로 간단히 읽어오기만 하면되니까 어느쪽을 사용해도 무관하다. 
+  
+  12345로 돌려주고. 2를 나눠서 하라는문장이 나오면 8022를 넣고 계속돌려주면 결과를 얻을수 있다. 
+  
+  답은 http://www.pythonchallenge.com/pc/def/peak.html !
+*/
+
+import urllib2
+
+sarch = []
+url= "http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=%s"
+nothing = "12345"
+// nothing = "8022"
+
+response = urllib2.urlopen(url % nothing)
+html = response.read()
+sarch = html.split()
+
+while True:
+response = urllib2.urlopen(url % nothing)
+html = response.read()
+print html
+sarch = html.split()
+nothing = sarch.pop()
