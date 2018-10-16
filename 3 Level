@@ -1,0 +1,46 @@
+/*
+  먼저 전편과같이 파일을 한글자씩 읽어온다. 그다음 배열의 길이가 10미만이면 (if 엔터가 아닐때) array에 append
+  만약 배열의 길이가 9가 되었다면. smallLetter()함수에 array를 인자로 넣어서 함수를 실행시킨다. 
+  smallLetter() 이 실행되면 인자로 받아온배열을 하나하나 대 소문자를확인한다. 
+  대소문자에 대문자면 True를 소문자면 False를 받아오게 한후,
+  F, T, T, T, F, T, T, T, F 형태인지 확인. 맞으면 가운데 F 의 값을 새로운 
+  ansarr에 append . 마지막에 ansarr만 출력해 답을 보면 끝이다.
+*/
+
+
+file = '3LevelText.txt'
+array = []
+ansarr = []
+
+def smallLetter(arr):
+boolarr = []
+for i in range(9):
+boolarr.append(arr[i].isupper())
+if (boolarr[0] == False and boolarr[1] == True and boolarr[2] == True and boolarr[3] == True and boolarr[5] == True and boolarr[6] == True and boolarr[7] == True and boolarr[8] == False and boolarr[4] == False):
+ansarr.append(arr[4])
+
+
+
+with open(file,mode='rt') as f:
+for data in f.read():
+if (len(array) < 10):
+if(data != '\n'):
+array.append(data)
+if (len(array) == 9):
+smallLetter(array)
+del array[0]
+print ansarr
+
+
+
+/*
+  re.findall을 이용.
+*/
+
+import re
+file = '3LevelText.txt'
+ansarr = []
+with open(file,mode='rt') as f:
+for data in f.readlines():
+ansarr.append("".join(re.findall("[^A-Z]+[A-Z]{3}([a-z])[A-Z]{3}[^A-Z]+", data)))
+print "".join(ansarr)
